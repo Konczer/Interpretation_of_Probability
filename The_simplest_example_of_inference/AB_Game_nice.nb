@@ -1,0 +1,294 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 11.3' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[      9796,        286]
+NotebookOptionsPosition[      8938,        262]
+NotebookOutlinePosition[      9272,        277]
+CellTagsIndexPosition[      9229,        274]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Game theoretic approach of Hypothesis testing", "Title",
+ CellChangeTimes->{{3.779825127384601*^9, 
+  3.779825156234994*^9}},ExpressionUUID->"2c9ca5bd-1a7f-49f1-9bb4-\
+ff08fc15bb08"],
+
+Cell[CellGroupData[{
+
+Cell["Data focused", "Section",
+ CellChangeTimes->{{3.779825211804409*^9, 
+  3.779825249953003*^9}},ExpressionUUID->"af85ecb7-db18-46d6-842b-\
+a0712d8a71a5"],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"p", "[", "k_", "]"}], "[", "pA_", "]"}], "[", "\[CapitalNu]_", 
+   "]"}], ":=", 
+  RowBox[{
+   FormBox[
+    TemplateBox[{"\[CapitalNu]","k"},
+     "Binomial"],
+    TraditionalForm], 
+   SuperscriptBox["pA", "k"], 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{"1", "-", "pA"}], ")"}], 
+    RowBox[{"\[CapitalNu]", "-", "k"}]]}]}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"\[CapitalDelta]I", "[", 
+   RowBox[{"p_", ",", "p\:02b9_"}], "]"}], ":=", 
+  RowBox[{"-", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"p", " ", 
+      RowBox[{"Log", "[", 
+       FractionBox["p\:02b9", "p"], "]"}]}], "+", 
+     RowBox[{
+      RowBox[{"(", 
+       RowBox[{"1", "-", "p"}], ")"}], " ", 
+      RowBox[{"Log", "[", 
+       FractionBox[
+        RowBox[{"1", "-", "p\:02b9"}], 
+        RowBox[{"1", "-", "p"}]], "]"}]}]}], ")"}]}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{
+     RowBox[{"p\:02b9", "[", "l_", "]"}], "[", 
+     RowBox[{"pA_", ",", "pB_"}], "]"}], "[", "\[CapitalNu]_", "]"}], "[", 
+   "P_", "]"}], ":=", 
+  FractionBox[
+   RowBox[{
+    RowBox[{"pA", " ", "P", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"p", "[", "l", "]"}], "[", "pA", "]"}], "[", "\[CapitalNu]", 
+      "]"}]}], "+", 
+    RowBox[{"pB", " ", 
+     RowBox[{"(", 
+      RowBox[{"1", "-", "P"}], ")"}], 
+     RowBox[{
+      RowBox[{
+       RowBox[{"p", "[", "l", "]"}], "[", "pB", "]"}], "[", "\[CapitalNu]", 
+      "]"}]}]}], 
+   RowBox[{
+    RowBox[{"P", " ", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"p", "[", "l", "]"}], "[", "pA", "]"}], "[", "\[CapitalNu]", 
+      "]"}]}], "+", 
+    RowBox[{
+     RowBox[{"(", 
+      RowBox[{"1", "-", "P"}], ")"}], 
+     RowBox[{
+      RowBox[{
+       RowBox[{"p", "[", "l", "]"}], "[", "pB", "]"}], "[", "\[CapitalNu]", 
+      "]"}]}]}]]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{
+    RowBox[{"\[CapitalDelta]", "[", "P_", "]"}], "[", 
+    RowBox[{"pA_", ",", "pB_"}], "]"}], "[", "\[CapitalNu]_", "]"}], ":=", 
+  RowBox[{
+   RowBox[{"P", " ", 
+    RowBox[{"(", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"k", "=", "0"}], "\[CapitalNu]"], 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"p", "[", "k", "]"}], "[", "pA", "]"}], "[", "\[CapitalNu]", 
+        "]"}], " ", 
+       RowBox[{"\[CapitalDelta]I", "[", 
+        RowBox[{"pA", ",", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"p\:02b9", "[", "k", "]"}], "[", 
+            RowBox[{"pA", ",", "pB"}], "]"}], "[", "\[CapitalNu]", "]"}], "[",
+           "P", "]"}]}], "]"}]}]}], ")"}]}], "+", 
+   RowBox[{
+    RowBox[{"(", 
+     RowBox[{"1", "-", "P"}], ")"}], " ", 
+    RowBox[{"(", 
+     RowBox[{
+      UnderoverscriptBox["\[Sum]", 
+       RowBox[{"k", "=", "0"}], "\[CapitalNu]"], 
+      RowBox[{
+       RowBox[{
+        RowBox[{
+         RowBox[{"p", "[", "k", "]"}], "[", "pB", "]"}], "[", "\[CapitalNu]", 
+        "]"}], " ", 
+       RowBox[{"\[CapitalDelta]I", "[", 
+        RowBox[{"pB", ",", 
+         RowBox[{
+          RowBox[{
+           RowBox[{
+            RowBox[{"p\:02b9", "[", "k", "]"}], "[", 
+            RowBox[{"pA", ",", "pB"}], "]"}], "[", "\[CapitalNu]", "]"}], "[",
+           "P", "]"}]}], "]"}]}]}], ")"}]}]}]}], "\n", 
+ RowBox[{
+  RowBox[{
+   RowBox[{"P\[LetterSpace]eq", "[", 
+    RowBox[{"pA_", ",", "pB_"}], "]"}], "[", "\[CapitalNu]_", "]"}], ":=", 
+  RowBox[{"P", "/.", 
+   RowBox[{
+    RowBox[{"FindMaximum", "[", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+          RowBox[{"\[CapitalDelta]", "[", "P", "]"}], "[", 
+          RowBox[{"pA", ",", "pB"}], "]"}], "[", "\[CapitalNu]", "]"}], ",", 
+        RowBox[{"P", "<", "1"}], ",", 
+        RowBox[{"P", ">", "0"}]}], "}"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"P", ",", 
+        RowBox[{"1", "/", "2"}]}], "}"}]}], "]"}], "\[LeftDoubleBracket]", 
+    "2", "\[RightDoubleBracket]"}]}]}], "\n"}], "Input",
+ CellChangeTimes->{{3.779825268656229*^9, 3.7798254054430733`*^9}, {
+   3.779825497313072*^9, 3.779825541659809*^9}, {3.7798255889566*^9, 
+   3.779825646678646*^9}, {3.7798256874033327`*^9, 3.779825721418131*^9}, {
+   3.779825759869451*^9, 3.779825879759778*^9}, 3.7798271506244497`*^9},
+ CellLabel->
+  "In[140]:=",ExpressionUUID->"d2778c1f-da12-4862-ae4c-944496404b84"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"P\[LetterSpace]eq", "[", 
+     RowBox[{"pA", ",", "pB"}], "]"}], "[", "\[CapitalNu]", "]"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"pA", ",", 
+       RowBox[{"1", "/", "2"}]}], "}"}], ",", "0", ",", "1"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"pB", ",", 
+       RowBox[{"2", "/", "3"}]}], "}"}], ",", "0", ",", "1"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"\[CapitalNu]", ",", "8"}], "}"}], ",", "0", ",", "30", ",", 
+     "1"}], "}"}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.779827000951067*^9, 3.779827063049061*^9}, {
+  3.7798271115288057`*^9, 3.779827120999792*^9}},
+ CellLabel->
+  "In[145]:=",ExpressionUUID->"b84bef86-90b7-4261-97ef-29659cb9b57d"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`pA$$ = Rational[1, 2], $CellContext`pB$$ = 
+    Rational[2, 3], $CellContext`\[CapitalNu]$$ = 8, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`pA$$], 
+       Rational[1, 2]}, 0, 1}, {{
+       Hold[$CellContext`pB$$], 
+       Rational[2, 3]}, 0, 1}, {{
+       Hold[$CellContext`\[CapitalNu]$$], 8}, 0, 30, 1}}, Typeset`size$$ = {
+    67., {0., 9.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`pA$227901$$ = 
+    0, $CellContext`pB$227902$$ = 0, $CellContext`\[CapitalNu]$227903$$ = 0}, 
+    
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`pA$$ = Rational[1, 2], $CellContext`pB$$ = 
+        Rational[2, 3], $CellContext`\[CapitalNu]$$ = 8}, 
+      "ControllerVariables" :> {
+        Hold[$CellContext`pA$$, $CellContext`pA$227901$$, 0], 
+        Hold[$CellContext`pB$$, $CellContext`pB$227902$$, 0], 
+        Hold[$CellContext`\[CapitalNu]$$, $CellContext`\[CapitalNu]$227903$$, 
+         0]}, "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, 
+      "Body" :> $CellContext`P\[LetterSpace]eq[$CellContext`pA$$, \
+$CellContext`pB$$][$CellContext`\[CapitalNu]$$], 
+      "Specifications" :> {{{$CellContext`pA$$, 
+          Rational[1, 2]}, 0, 1}, {{$CellContext`pB$$, 
+          Rational[2, 3]}, 0, 1}, {{$CellContext`\[CapitalNu]$$, 8}, 0, 30, 
+         1}}, "Options" :> {}, "DefaultOptions" :> {}],
+     ImageSizeCache->{256., {74., 81.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{{3.779827064679947*^9, 3.7798271240218563`*^9}, 
+   3.7798271564150143`*^9},
+ CellLabel->
+  "Out[145]=",ExpressionUUID->"c5dddda0-eaf6-467c-a9fa-ebf092cddd6d"]
+}, Open  ]]
+}, Open  ]],
+
+Cell["Model focused", "Section",
+ CellChangeTimes->{{3.779825227627234*^9, 
+  3.7798252443361692`*^9}},ExpressionUUID->"94993286-5bab-418e-9baf-\
+b6abb21f053a"]
+}, Open  ]]
+},
+WindowSize->{1855, 1028},
+WindowMargins->{{0, Automatic}, {0, Automatic}},
+FrontEndVersion->"11.3 for Linux x86 (64-bit) (March 6, 2018)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 188, 3, 98, "Title",ExpressionUUID->"2c9ca5bd-1a7f-49f1-9bb4-ff08fc15bb08"],
+Cell[CellGroupData[{
+Cell[793, 29, 157, 3, 68, "Section",ExpressionUUID->"af85ecb7-db18-46d6-842b-a0712d8a71a5"],
+Cell[953, 34, 4334, 135, 263, "Input",ExpressionUUID->"d2778c1f-da12-4862-ae4c-944496404b84"],
+Cell[CellGroupData[{
+Cell[5312, 173, 946, 27, 124, "Input",ExpressionUUID->"b84bef86-90b7-4261-97ef-29659cb9b57d"],
+Cell[6261, 202, 2474, 50, 207, "Output",ExpressionUUID->"c5dddda0-eaf6-467c-a9fa-ebf092cddd6d"]
+}, Open  ]]
+}, Open  ]],
+Cell[8762, 256, 160, 3, 68, "Section",ExpressionUUID->"94993286-5bab-418e-9baf-b6abb21f053a"]
+}, Open  ]]
+}
+]
+*)
+
